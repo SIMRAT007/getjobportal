@@ -13,6 +13,7 @@ import SavedJobs from "./pages/saved-jobs";
 import JobPage from "./pages/job";
 
 import "./App.css";
+import Main from "./pages/Main";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <LandingPage />,
+        element: <Main />,
       },
       {
         path: "/onboarding",

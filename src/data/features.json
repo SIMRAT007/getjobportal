@@ -1,0 +1,17 @@
+[
+    {
+      "name": "Easy Job Search",
+      "description": "Quickly find jobs that match your skills and preferences with our advanced search and filtering options.",
+      "icon": "SearchIcon" 
+    },
+    {
+      "name": "Post Jobs Effortlessly",
+      "description": "Employers can post job openings in just a few clicks, reaching thousands of potential candidates instantly.",
+      "icon": "UploadIcon" 
+    },
+    {
+      "name": "Global Reach",
+      "description": "Connect with job opportunities and talent from around the world, expanding your horizons.",
+      "icon": "GlobeAltIcon" 
+    }
+  ]

@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "How to Write an Effective Resume",
+    "href": "https://blog.coursera.org/how-to-write-an-effective-resume/",
+    "description": "In this guide, you’ll learn how to create an effective resume. You’ll learn strategies for tailoring your resume to the role you’re pursuing, and how to effectively present your skills and experience—whether you’re a new-job seeker or a mid-career professional switching to a new field. You will learn about templates and formats and understand the structure of every core section of a successful resume...",
+    "date": "September 14, 2020",
+    "category": { "title": "CV | Reaume | Job" },
+    "author": {
+      "name": "By - Coursera",
+      "imageUrl": "https://149357281.v2.pressablecdn.com/wp-content/uploads/2020/09/Job-Search-Guide-2-OMNI-Frame-18.jpg"
+    }
+  },
+  {
+    "id": 2,
+    "title": "5 Tips to Master the STAR Interview Technique as a Candidate",
+    "href": "https://www.bubble-jobs.co.uk/5-tips-to-master-the-star-interview-technique-as-a-candidate/",
+    "description": "Job interviews can be daunting, but using the right techniques can significantly improve your chances of success. One highly effective method is the STAR interview technique, which helps you provide structured and impactful answers to behavioral questions. Here’s how to master the STAR interview technique and impress your potential employers...",
+    "date": "July 03, 2023",
+    "category": { "title": "Interview Technique" },
+    "author": {
+      "name": "By - Bubble",
+      "imageUrl": "https://www.bubble-jobs.co.uk/wp-content/uploads/2024/07/star_interviews.jpg"
+    }
+  },
+  {
+    "id": 3,
+    "title": "How to Choose the Right Career Path After Graduation",
+    "href": "https://huroorkee.ac.in/blog/how-to-choose-the-right-career-path-after-graduation-in-2025/",
+    "description": "Graduating is an exciting milestone, but it often comes with the daunting task of deciding what to do next. With countless career options and evolving industries, choosing the right path can be challenging...",
+    "date": "December 10, 2024",
+    "category": { "title": "Career Path" },
+    "author": {
+      "name": "By - Haridwar Uni.",
+      "imageUrl": "https://huroorkee.ac.in/blog/wp-content/uploads/2024/12/How-to-Choose-The-Right-Career-Path-After-Graduation-750x410.jpg"
+    }
+  }
+]

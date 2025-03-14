@@ -1,0 +1,58 @@
+[
+    {
+      "id": 1,
+      "name": "Rahul Sharma",
+      "text": "This platform made my job search so much easier. I found my dream job within weeks of signing up!",
+      "delay": 0.2,
+      "stars": "★ ★ ★ ★ ★"
+    },
+    {
+      "id": 2,
+      "name": "Priya Singh",
+      "text": "The variety of job listings here is amazing. I was able to find opportunities that matched my skills perfectly.",
+      "delay": 0.5,
+      "stars": "★ ★ ★ ★ ★"
+    },
+    {
+      "id": 3,
+      "name": "Amit Patel",
+      "text": "The user-friendly interface and helpful resources made my job search stress-free and efficient.",
+      "delay": 0.8,
+      "stars": "★ ★ ★ ★"
+    },
+    {
+      "id": 4,
+      "name": "Sneha Kapoor",
+      "text": "The personalized job recommendations were spot on. I landed a great position thanks to this platform!",
+      "delay": 1.1,
+      "stars": "★ ★ ★ ★ ★"
+    },
+    {
+      "id": 5,
+      "name": "Vikram Mehta",
+      "text": "The resume-building tools and interview tips provided here were invaluable in securing my new role.",
+      "delay": 1.4,
+      "stars": "★ ★ ★ ★ ★"
+    },
+    {
+      "id": 6,
+      "name": "Anjali Verma",
+      "text": "The job alerts feature kept me updated on the latest openings. I highly recommend this platform to job seekers.",
+      "delay": 1.7,
+      "stars": "★ ★ ★ ★"
+    },
+    {
+      "id": 7,
+      "name": "Rohit Gupta",
+      "text": "The support team was incredibly helpful in guiding me through the application process. Great experience overall!",
+      "delay": 2.0,
+      "stars": "★ ★ ★ ★ ★"
+    },
+    {
+      "id": 8,
+      "name": "Neha Joshi",
+      "text": "Thanks to this platform, I found a job that aligns perfectly with my career goals. Highly satisfied!",
+      "delay": 2.3,
+      "stars": "★ ★ ★ ★ ★"
+    }
+]
