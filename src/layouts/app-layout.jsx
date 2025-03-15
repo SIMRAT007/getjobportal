@@ -10,7 +10,7 @@ const AppLayout = () => {
         <Outlet />
       </main>
       <div className="p-10 text-center bg-gray-800 mt-10">
-        Copyright © 2025 @destinyjobs
+        Copyright © 2025 @Let's Hire
       </div>
     </div>
   );
