@@ -114,7 +114,7 @@ const PostJob = () => {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
-                    {State.getStatesOfCountry("IN").map(({ name }) => (
+                    {State.getStatesOfCountry("CA").map(({ name }) => (
                       <SelectItem key={name} value={name}>
                         {name}
                       </SelectItem>
