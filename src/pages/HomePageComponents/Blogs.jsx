@@ -31,7 +31,7 @@ export default function Blogs() {
               </div>
               <div className="group relative">
                 <h3
-                  className="mt-3 text-lg/6 font-semibold text-gray-200 group-hover:text-gray-400"
+                  className="mt-3 text-lg/6 font-semibold text-gray-800 group-hover:text-gray-400"
                 >
                   <a href={post.href} target='_blank' rel='noreferrer'>
                     <span className="absolute inset-0" />

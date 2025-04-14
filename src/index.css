@@ -62,7 +62,18 @@
 .wmde-markdown ul {
   list-style-type: disc;
   padding-left: 25px;
-  color: white;
+  color: black;
+}
+.wmde-markdown h1,h2,h3,h4,h5,h6,ul,ol,li,blockquote{
+  color: black;
+}
+.wmde-markdown p{
+  color: gray;
+}
+.wmde-markdown strong{
+  font-weight: bold;
+  font-size: large;
+  color: black;
 }
 
 @layer base {
@@ -76,9 +87,58 @@
 
 @layer utilities {
   .gradient {
-    @apply bg-gradient-to-br from-gray-500 via-gray-200 to-white;
+    @apply bg-gradient-to-br from-gray-700 via-gray-400 to-gray-200;
   }
   .gradient-title {
     @apply gradient text-transparent bg-clip-text;
   }
 }
+
+
+.oval-highlight {
+  display: inline-block; /* Ensures it stays inline */
+  position: relative;
+  padding: 0.2em 0.6em;
+  border-radius: 50px; /* Oval shape */
+  background-color: transparent; /* Transparent background */
+  font-style: italic; /* Optional: to give a handwritten feel */
+  z-index: 1;
+  color: rgb(28, 124, 226); 
+}
+
+.oval-highlight::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px dashed rgb(28, 124, 226); /* Optional: dashed border for a pen-drawn effect */
+  border-radius: 50px;
+  transform: rotate(-2deg); /* Slight rotation for an organic look */
+  z-index: -1;
+}
+
+
+/* EDITOR */
+.custom-md-editor .w-md-editor-preview p,h1,h2,h3,h4,h5,h6,li,blockquote,ul ol{
+  color: black;
+}
+
+div.wmde-markdown {
+  background-color: transparent;
+}
+
+div.w-md-editor-toolbar {
+  background-color: white;
+}
+
+div.w-md-editor-toolbar button {
+  background-color: black;
+}
+
+div.custom-md-editor.w-md-editor-preview ol li::marker {
+  color: black;
+}
+
+

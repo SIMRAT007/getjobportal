@@ -12,7 +12,7 @@ const Faq = () => {
     <Accordion type="multiple" className="w-full">
         {faqs.map((faq, index) => (
           <AccordionItem key={index} value={`item-${index + 1}`}>
-            <AccordionTrigger>{faq.question}</AccordionTrigger>
+            <AccordionTrigger className="hover:no-underline">{faq.question}</AccordionTrigger>
             <AccordionContent>{faq.answer}</AccordionContent>
           </AccordionItem>
         ))}

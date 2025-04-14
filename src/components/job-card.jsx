@@ -14,6 +14,7 @@ import { deleteJob, saveJob } from "@/api/apiJobs";
 import { useUser } from "@clerk/clerk-react";
 import { useEffect, useState } from "react";
 import { BarLoader } from "react-spinners";
+import { useNavigate } from "react-router-dom"; 
 
 const JobCard = ({
   job,
@@ -23,7 +24,8 @@ const JobCard = ({
 }) => {
   const [saved, setSaved] = useState(savedInit);
 
-  const { user } = useUser();
+  const { user,isSignedIn } = useUser();
+  const navigate = useNavigate(); // Hook for navigation
 
   const { loading: loadingDeleteJob, fn: fnDeleteJob } = useFetch(deleteJob, {
     job_id: job.id,
@@ -33,7 +35,7 @@ const JobCard = ({
     loading: loadingSavedJob,
     data: savedJob,
     fn: fnSavedJob,
-  } = useFetch(saveJob);
+  } = useFetch(saveJob,{alreadySaved:saved});
 
   const handleSaveJob = async () => {
     await fnSavedJob({
@@ -46,6 +48,18 @@ const JobCard = ({
   const handleDeleteJob = async () => {
     await fnDeleteJob();
     onJobAction();
+  };
+
+  const handleMoreDetailsClick = () => {
+    if (!isSignedIn) {
+      window.alert("You Need To Login To Apply For Jobs, Click OK To Try Again!");
+      setTimeout(() => {
+        navigate("/jobs"); // Redirect to /jobs page
+      }, 100);
+    } else {
+      console.log("simrat else")
+      navigate(`/job/${job.id}`); // Navigate to job details page if signed in
+    }
   };
 
   useEffect(() => {
@@ -63,7 +77,7 @@ const JobCard = ({
           {isMyJob && (
             <Trash2Icon
               fill="red"
-              size={18}
+              size={28}
               className="text-red-300 cursor-pointer"
               onClick={handleDeleteJob}
             />
@@ -82,7 +96,11 @@ const JobCard = ({
       </CardContent>
       <CardFooter className="flex gap-2">
         <Link to={`/job/${job.id}`} className="flex-1">
-          <Button variant="secondary" className="w-full">
+        <Button
+            variant="secondary"
+            className="w-full bg-blue-400 text-white hover:bg-blue-600"
+            onClick={handleMoreDetailsClick} // Add onClick handler
+          >
             More Details
           </Button>
         </Link>

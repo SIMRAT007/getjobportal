@@ -18,6 +18,7 @@ const CreatedApplications = () => {
 
   useEffect(() => {
     fnApplications();
+    console.log("applications", applications)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -27,7 +28,8 @@ const CreatedApplications = () => {
 
   return (
     <div className="flex flex-col gap-2">
-      {applications?.map((application) => {
+      {job?.applications?.map((application) => {
+        console.log("Job Application:", application);
         return (
           <ApplicationCard
             key={application.id}

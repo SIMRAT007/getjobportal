@@ -32,25 +32,39 @@ const JobListing = () => {
     fn: fnCompanies,
   } = useFetch(getCompanies);
 
-  const {
-    loading: loadingJobs,
-    data: jobs,
-    fn: fnJobs,
-  } = useFetch(getJobs, {
-    location,
-    company_id,
-    searchQuery,
-  });
+  const [jobs, setJobs] = useState([]);
+  const [loadingJobs, setLoadingJobs] = useState(true);
+  
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        setLoadingJobs(true);
+        const data = await getJobs(null, {
+          location: location || null,
+          company_id: company_id || null,
+          searchQuery: searchQuery || null,
+        });
+        console.log("Fetched jobs:", data);
+        setJobs(data || []);
+      } catch (err) {
+        console.error("Job fetch error:", err);
+      } finally {
+        setLoadingJobs(false);
+      }
+    };
+  
+    fetchJobs();
+  }, [location, company_id, searchQuery]);
+
+  // useEffect(() => {
+  //   if (isLoaded) {
+  //     fnCompanies();
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [isLoaded]);
 
   useEffect(() => {
-    if (isLoaded) {
-      fnCompanies();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoaded]);
-
-  useEffect(() => {
-    if (isLoaded) fnJobs();
+    if (isLoaded) fnCompanies();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoaded, location, company_id, searchQuery]);
 
@@ -74,7 +88,7 @@ const JobListing = () => {
 
   return (
     <div className="">
-      <h1 className="gradient-title font-extrabold text-6xl sm:text-7xl text-center pb-8">
+      <h1 className="gradient-title font-extrabold text-6xl sm:text-7xl text-center pb-8 mt-10">
         Latest Jobs
       </h1>
       <form
@@ -87,7 +101,7 @@ const JobListing = () => {
           name="search-query"
           className="h-full flex-1  px-4 text-md"
         />
-        <Button type="submit" className="h-full sm:w-28" variant="blue">
+        <Button type="submit" className="h-full sm:w-28 text-white" variant="blue">
           Search
         </Button>
       </form>
@@ -99,7 +113,7 @@ const JobListing = () => {
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              {State.getStatesOfCountry("IN").map(({ name }) => {
+              {State.getStatesOfCountry("CA").map(({ name }) => {
                 return (
                   <SelectItem key={name} value={name}>
                     {name}

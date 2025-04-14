@@ -24,6 +24,7 @@ const ApplicationCard = ({ application, isCandidate = false }) => {
     link.href = application?.resume;
     link.target = "_blank";
     link.click();
+    console.log("application.job_id", application?.job?.title, "application.job?.company?.name",application?.job?.company?.name, "application.application?.name",application?.name, "candidate", isCandidate);
   };
 
   const { loading: loadingHiringStatus, fn: fnHiringStatus } = useFetch(
@@ -37,14 +38,15 @@ const ApplicationCard = ({ application, isCandidate = false }) => {
     fnHiringStatus(status).then(() => fnHiringStatus());
   };
 
+
   return (
     <Card>
       {loadingHiringStatus && <BarLoader width={"100%"} color="#36d7b7" />}
       <CardHeader>
         <CardTitle className="flex justify-between font-bold">
-          {isCandidate
-            ? `${application?.job?.title} at ${application?.job?.company?.name}`
-            : application?.name}
+        {isCandidate
+  ? `${application?.job?.title || "Unknown Title"} at ${application?.job?.company?.name || "Unknown Company"}`
+  : application?.name || "Unknown Applicant"}
           <Download
             size={18}
             className="bg-white text-black rounded-full h-8 w-8 p-1.5 cursor-pointer"

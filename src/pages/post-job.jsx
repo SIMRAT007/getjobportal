@@ -2,6 +2,7 @@ import { getCompanies } from "@/api/apiCompanies";
 import { addNewJob } from "@/api/apiJobs";
 import AddCompanyDrawer from "@/components/add-company-drawer";
 import { Button } from "@/components/ui/button";
+import "../index.css";
 
 import { Input } from "@/components/ui/input";
 import {
@@ -88,7 +89,7 @@ const PostJob = () => {
 
   return (
     <div>
-      <h1 className="gradient-title font-extrabold text-5xl sm:text-7xl text-center pb-8">
+      <h1 className="gradient-title font-extrabold text-5xl sm:text-7xl text-center pb-8 mt-10">
         Post a Job
       </h1>
       <form
@@ -103,7 +104,7 @@ const PostJob = () => {
           <p className="text-red-500">{errors.description.message}</p>
         )}
 
-        <div className="flex gap-4 items-center">
+        <div className="flex flex-col gap-4 md:flex-row md:gap-6 md:items-center md:justify-items-start">
           <Controller
             name="location"
             control={control}
@@ -162,7 +163,9 @@ const PostJob = () => {
           name="requirements"
           control={control}
           render={({ field }) => (
-            <MDEditor value={field.value} onChange={field.onChange} />
+            <MDEditor value={field.value} onChange={field.onChange}  style={{ backgroundColor: "white", color: "black" }} textareaProps={{
+              placeholder: 'Please enter job description and other details',
+            }} className="custom-md-editor"/>
           )}
         />
         {errors.requirements && (

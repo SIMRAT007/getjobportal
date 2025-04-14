@@ -1,5 +1,6 @@
+// src/components/Header.tsx
 import { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import {
   SignedIn,
   SignedOut,
@@ -9,18 +10,25 @@ import {
 } from "@clerk/clerk-react";
 import { Button } from "./ui/button";
 import { BriefcaseBusiness, Heart, PenBox } from "lucide-react";
+import { setGuestMode, clearGuestMode } from "@/utils/guestUtils";
 
 const Header = () => {
   const [showSignIn, setShowSignIn] = useState(false);
-
   const [search, setSearch] = useSearchParams();
   const { user } = useUser();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (search.get("sign-in")) {
       setShowSignIn(true);
     }
   }, [search]);
+
+  useEffect(() => {
+    if (user) {
+      clearGuestMode(); // Remove guest mode when user logs in
+    }
+  }, [user]);
 
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) {
@@ -31,22 +39,38 @@ const Header = () => {
 
   return (
     <>
-      <nav className="py-4 flex justify-between items-center">
+      <nav className="py-4 flex justify-between items-center mb-5 md:px-8 md:rounded-full md:mt-5 md:border md:border-2 md:border-dashed md:border-gray-500 md:shadow-2xl md:backdrop-blur">
         <Link to="/">
-          {/* <img src="/logo.png" className="h-20" alt="Hirrd Logo" /> */}
-         <p className="text-3xl italic">Destiny Jobs</p> 
+          <p className="md:text-4xl text-2xl italic text-gray-600">Destiny Jobs</p>
         </Link>
 
         <div className="flex gap-8">
+          <div className="hidden md:flex gap-8 mt-2">
+            <Link to="/" className="text-lg font-medium text-gray-600 hover:text-gray-800">
+              Home
+            </Link>
+            <Link to="/contact" className="text-lg font-medium text-gray-600 hover:text-gray-800">
+              Contact
+            </Link>
+          </div>
+
           <SignedOut>
-            <Button variant="outline" onClick={() => setShowSignIn(true)}>
+            <Button
+              variant="outline"
+              className="text-gray-600 border-gray-400 hover:bg-gray-100 rounded-full md:px-6"
+              onClick={() => setShowSignIn(true)}
+            >
               Login
             </Button>
           </SignedOut>
+
           <SignedIn>
             {user?.unsafeMetadata?.role === "recruiter" && (
               <Link to="/post-job">
-                <Button variant="destructive" className="rounded-full">
+                <Button
+                  variant="destructive"
+                  className="rounded-full bg-red-500 text-white hover:bg-red-600"
+                >
                   <PenBox size={20} className="mr-2" />
                   Post a Job
                 </Button>
@@ -79,13 +103,30 @@ const Header = () => {
 
       {showSignIn && (
         <div
-          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
+          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
           onClick={handleOverlayClick}
         >
-          <SignIn
-            signUpForceRedirectUrl="/onboarding"
-            fallbackRedirectUrl="/onboarding"
-          />
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="bg-white p-6 rounded-xl shadow-xl flex flex-col items-center gap-4"
+          >
+            <SignIn
+              signUpForceRedirectUrl="/onboarding"
+              fallbackRedirectUrl="/onboarding"
+            />
+            <p className="text-gray-500 text-sm">or</p>
+            <Button
+              variant="outline"
+              className="rounded-full text-gray-700 border-gray-300"
+              onClick={() => {
+                setGuestMode();
+                setShowSignIn(false);
+                navigate("/jobs");
+              }}
+            >
+              Continue as Guest
+            </Button>
+          </div>
         </div>
       )}
     </>

@@ -64,7 +64,7 @@ const AddCompanyDrawer = ({ fetchCompanies }) => {
   return (
     <Drawer>
       <DrawerTrigger>
-        <Button type="button" size="sm" variant="secondary">
+        <Button type="button" size="sm" variant="secondary" className="bg-blue-500 text-white">
           Add Company
         </Button>
       </DrawerTrigger>

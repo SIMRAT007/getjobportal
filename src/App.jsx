@@ -11,6 +11,7 @@ import JobListing from "./pages/jobListing";
 import MyJobs from "./pages/my-jobs";
 import SavedJobs from "./pages/saved-jobs";
 import JobPage from "./pages/job";
+import Contact from "./pages/contact";
 
 import "./App.css";
 import Main from "./pages/Main";
@@ -34,9 +35,9 @@ const router = createBrowserRouter([
       {
         path: "/jobs",
         element: (
-          <ProtectedRoute>
+          // <ProtectedRoute>
             <JobListing />
-          </ProtectedRoute>
+          // </ProtectedRoute>
         ),
       },
       {
@@ -71,13 +72,21 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      {
+        path: "/contact",
+        element: (
+          <ProtectedRoute>
+            <Contact/>
+          </ProtectedRoute>
+        ),
+      },
     ],
   },
 ]);
 
 function App() {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
       <RouterProvider router={router} />
     </ThemeProvider>
   );

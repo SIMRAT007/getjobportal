@@ -21,6 +21,7 @@ const Main = () => {
       <Companies />
       <Feature1 />
       <Stats />
+      <Feature2 />
 
       {/* Testimonials Section */}
       <Header
@@ -28,7 +29,7 @@ const Main = () => {
         text3="Hear from our users about how we helped them achieve their career goals. Real stories from real people."
       />
       <Testimonials />
-      <Feature2 />
+      
 
       {/* Blogs Section */}
       <Header

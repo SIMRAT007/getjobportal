@@ -9,7 +9,7 @@ const AppLayout = () => {
         <Header />
         <Outlet />
       </main>
-      <div className="p-10 text-center bg-gray-800 mt-10">
+      <div className="p-10 text-center bg-gray-500 mt-10">
         Copyright © 2025 @Destiny Jobs
       </div>
     </div>
