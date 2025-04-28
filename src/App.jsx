@@ -12,6 +12,7 @@ import MyJobs from "./pages/my-jobs";
 import SavedJobs from "./pages/saved-jobs";
 import JobPage from "./pages/job";
 import Contact from "./pages/contact";
+import TermAndCondition from "./pages/TermAndCondition";
 
 import "./App.css";
 import Main from "./pages/Main";
@@ -75,9 +76,13 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: (
-          <ProtectedRoute>
             <Contact/>
-          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/terms-conditions",
+        element: (
+            <TermAndCondition/>
         ),
       },
     ],

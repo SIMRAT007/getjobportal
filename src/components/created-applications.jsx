@@ -28,8 +28,7 @@ const CreatedApplications = () => {
 
   return (
     <div className="flex flex-col gap-2">
-      {job?.applications?.map((application) => {
-        console.log("Job Application:", application);
+      {applications?.map((application) => {
         return (
           <ApplicationCard
             key={application.id}

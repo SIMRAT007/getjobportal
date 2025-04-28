@@ -3,6 +3,7 @@ import { useUser } from "@clerk/clerk-react";
 import { State } from "country-state-city";
 import { BarLoader } from "react-spinners";
 import useFetch from "@/hooks/use-fetch";
+import { City } from "country-state-city"; 
 
 import JobCard from "@/components/job-card";
 import { Button } from "@/components/ui/button";
@@ -87,7 +88,7 @@ const JobListing = () => {
   }
 
   return (
-    <div className="">
+    <div className="container">
       <h1 className="gradient-title font-extrabold text-6xl sm:text-7xl text-center pb-8 mt-10">
         Latest Jobs
       </h1>
@@ -113,7 +114,9 @@ const JobListing = () => {
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              {State.getStatesOfCountry("CA").map(({ name }) => {
+              {City.getAllCities()
+            .filter((city) => city.countryCode === "CA")
+            .map(({ name }) => {
                 return (
                   <SelectItem key={name} value={name}>
                     {name}

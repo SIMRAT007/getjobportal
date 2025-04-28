@@ -7,7 +7,7 @@ export default function Blogs() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto mt-0 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 pt-10 sm:mt-0 sm:pt-0 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {posts.map((post) => (
-            <article key={post.id} className="flex max-w-xl flex-col items-start justify-between">
+            <article key={post.id} className="flex max-w-xl flex-col items-start justify-between bg-[#173a96] rounded-lg p-3">
               <img
                 alt=""
                 src={post.author.imageUrl}
@@ -16,7 +16,7 @@ export default function Blogs() {
               <div className="flex items-center gap-x-4 text-xs mt-4">
                 <time
                   dateTime={post.datetime}
-                  className="text-gray-500"
+                  className="text-gray-300"
                 >
                   {post.date}
                 </time>
@@ -24,14 +24,14 @@ export default function Blogs() {
                   href={post.href}
                   target='_blank'
                   rel='noreferrer'
-                  className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
+                  className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-[#173a96] hover:bg-gray-100"
                 >
                   {post.category.title}
                 </a>
               </div>
               <div className="group relative">
                 <h3
-                  className="mt-3 text-lg/6 font-semibold text-gray-800 group-hover:text-gray-400"
+                  className="mt-3 text-lg/6 font-semibold text-gray-200 group-hover:text-gray-400"
                 >
                   <a href={post.href} target='_blank' rel='noreferrer'>
                     <span className="absolute inset-0" />
@@ -39,14 +39,14 @@ export default function Blogs() {
                   </a>
                 </h3>
                 <p
-                  className="mt-5 line-clamp-3 text-sm/6 text-gray-600"
+                  className="mt-5 line-clamp-3 text-sm/6 text-gray-400"
                 >
                   {post.description}
                 </p>
               </div>
               <div className="relative mt-4 flex items-center justify-between w-full">
                 <p
-                  className="font-semibold text-gray-500"
+                  className="font-semibold text-gray-300"
                 >
                   <a href={post.href}>
                     <span className="absolute inset-0" />

@@ -54,7 +54,7 @@ const Testimonials = () => {
           <Slider {...setting}>
             {TestimonialsData.map((data) => (
               <div key={data.id} className="my-2">
-                <div className="flex flex-col gap-0 p-4 shadow-lg mx-4 rounded-3xl" style={{ background: 'linear-gradient(to bottom, gray, #1f2937)' }}>
+                <div className="flex flex-col gap-0 p-4 shadow-lg mx-4 rounded-3xl bg-[#173a96]">
                   {/* upper section */}
                   <div className="flex justify-start items-center gap-2">
                     <div>

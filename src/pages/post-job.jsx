@@ -3,6 +3,7 @@ import { addNewJob } from "@/api/apiJobs";
 import AddCompanyDrawer from "@/components/add-company-drawer";
 import { Button } from "@/components/ui/button";
 import "../index.css";
+import { City } from "country-state-city";
 
 import { Input } from "@/components/ui/input";
 import {
@@ -88,7 +89,7 @@ const PostJob = () => {
   }
 
   return (
-    <div>
+    <div className="container">
       <h1 className="gradient-title font-extrabold text-5xl sm:text-7xl text-center pb-8 mt-10">
         Post a Job
       </h1>
@@ -115,7 +116,9 @@ const PostJob = () => {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
-                    {State.getStatesOfCountry("CA").map(({ name }) => (
+                    {City.getAllCities()
+            .filter((city) => city.countryCode === "CA")
+            .map(({ name }) => (
                       <SelectItem key={name} value={name}>
                         {name}
                       </SelectItem>

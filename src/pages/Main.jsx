@@ -12,6 +12,9 @@ import Header from '../pages/HomePageComponents/Header'
 import Stats from './HomePageComponents/Stats'
 import Feature1 from './HomePageComponents/Feature1'
 import Feature2 from './HomePageComponents/Feature2'
+import WhyUs from './HomePageComponents/WhyUs'
+import Cta from './HomePageComponents/Cta'
+import JobList from './HomePageComponents/joblist'
 
 const Main = () => {
   return (
@@ -21,7 +24,19 @@ const Main = () => {
       <Companies />
       <Feature1 />
       <Stats />
-      <Feature2 />
+      <Header
+        text1="Why Us?"
+        text3="Unlock your true potential with a seamless experience to post jobs, hire top talent, search for opportunities, and apply effortlessly. Discover a world of possibilities that align with your skills, interests, and aspirations."
+      />
+      <WhyUs/>
+
+      <Header
+        text1="Latest Jobs"
+        text3="We Empower Job Seekers Like You To Streamline And Supercharge Your Job Search"
+      />
+      <JobList/>
+      
+      {/* <Feature2 /> */}
 
       {/* Testimonials Section */}
       <Header
@@ -38,6 +53,8 @@ const Main = () => {
       />
       <Blogs />
 
+      <Cta/>
+
       {/* FAQ Section */}
       <Header
         text1="FAQ"
@@ -45,41 +62,6 @@ const Main = () => {
       />
       <Faq />
 
-
-
-      {/* Contact Us Section */}
-      {/* <Header 
-        text1="Contact Us" 
-        text3="Need assistance? Reach out to us for support, inquiries, or feedback. We are here to help you succeed." 
-      /> */}
-      {/* <ContactUs /> */}
-
-      {/* Companies Section */}
-      {/* <Header 
-        text1="Top Companies" 
-        text3="Discover job opportunities from the most reputable companies. Start your career journey with trusted employers." 
-      /> */}
-
-      {/* Why Choose Us Section */}
-      {/* <Header 
-        text1="Why Choose Us" 
-        text3="We connect job seekers with the best opportunities and employers with top talent. Your success is our priority." 
-      /> */}
-      {/* <WhyChooseUs /> */}
-
-      {/* Gallery Videos Section */}
-      {/* <Header 
-        text1="Gallery Videos" 
-        text3="Watch inspiring stories and success journeys of our users. See how we make a difference in their lives." 
-      /> */}
-      {/* <GalleryVideos /> */}
-
-      {/* About Us Section */}
-      {/* <Header 
-        text1="About Us" 
-        text3="Learn more about our mission to bridge the gap between job seekers and employers. We are here to empower careers." 
-      />
-     <About/> */}
 
 
     </>

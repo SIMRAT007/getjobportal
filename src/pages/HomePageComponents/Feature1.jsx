@@ -9,13 +9,13 @@ const iconMap = {
 
 export default function Feature1() {
   return (
-    <div className="overflow-hidden py-8 sm:py-28">
+    <div className="overflow-hidden py-8 sm:py-28 container">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 max-sm:text-center">
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
           <div className="lg:pt-4 lg:pr-8">
             <div className="lg:max-w-lg">
-              <h2 className="text-base font-semibold border-2 border-gray-300 text-gray-400 px-3 py-2 inline-block rounded-3xl">Empowering Your Career Journey</h2>
-              <p className="mt-10 text-4xl font-semibold tracking-tight text-black sm:text-7xl">
+              <h2 className="text-base font-semibold border-2 border-gray-400 text-gray-500 px-3 py-2 inline-block rounded-3xl">Empowering Your Career Journey</h2>
+              <p className="mt-10 text-4xl font-semibold tracking-tight text-[#173a96] sm:text-7xl">
                 Seamless Job Search and Recruitment
               </p>
               <p className="mt-10 text-xl text-gray-500">
@@ -29,7 +29,7 @@ export default function Feature1() {
                   return (
                     <div key={feature.name} className="relative pl-9">
                       <dt className="inline font-semibold text-black">
-                        <Icon aria-hidden="true" className="absolute top-1 left-1 h-5 w-5 text-indigo-400" />
+                        <Icon aria-hidden="true" className="absolute top-1 left-1 h-5 w-5 text-[#173a96]" />
                         {feature.name}
                       </dt>
                       <dd className="inline text-gray-500"> {feature.description}</dd>

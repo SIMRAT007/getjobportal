@@ -98,7 +98,7 @@ const JobCard = ({
         <Link to={`/job/${job.id}`} className="flex-1">
         <Button
             variant="secondary"
-            className="w-full bg-blue-400 text-white hover:bg-blue-600"
+            className="w-full bg-[#173a96] text-white hover:bg-blue-600"
             onClick={handleMoreDetailsClick} // Add onClick handler
           >
             More Details

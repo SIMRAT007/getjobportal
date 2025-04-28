@@ -51,7 +51,7 @@ const JobPage = () => {
   }
 
   return (
-    <div className="flex flex-col gap-8 md:mt-24 ">
+    <div className="flex flex-col gap-8 md:mt-24 container">
       <div className="flex flex-col-reverse gap-6 md:flex-row justify-between items-center">
         <h1 className="gradient-title font-extrabold pb-3 text-4xl sm:text-6xl text-center md:text-left">
           {job?.title}

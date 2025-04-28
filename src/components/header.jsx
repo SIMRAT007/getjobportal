@@ -11,6 +11,8 @@ import {
 import { Button } from "./ui/button";
 import { BriefcaseBusiness, Heart, PenBox } from "lucide-react";
 import { setGuestMode, clearGuestMode } from "@/utils/guestUtils";
+import Logo from "../../public/logo.png";
+import { LogIn } from "lucide-react";
 
 const Header = () => {
   const [showSignIn, setShowSignIn] = useState(false);
@@ -39,15 +41,23 @@ const Header = () => {
 
   return (
     <>
-      <nav className="py-4 flex justify-between items-center mb-5 md:px-8 md:rounded-full md:mt-5 md:border md:border-2 md:border-dashed md:border-gray-500 md:shadow-2xl md:backdrop-blur">
+      <nav className="py-4 mt-2 flex justify-between items-center mb-5 md:px-8 md:rounded-full md:mt-5 md:border md:border-2 md:border-dashed md:border-gray-500 md:shadow-2xl md:backdrop-blur container">
         <Link to="/">
-          <p className="md:text-4xl text-2xl italic text-gray-600">Destiny Jobs</p>
+          {/* <p className="md:text-4xl text-2xl italic text-gray-600">Destiny Jobs</p> */}
+          <img
+            src={Logo}
+            alt="Destiny Jobs Logo"
+            className="w-[80%] md:w-44 h-auto"
+          />
         </Link>
 
         <div className="flex gap-8">
           <div className="hidden md:flex gap-8 mt-2">
             <Link to="/" className="text-lg font-medium text-gray-600 hover:text-gray-800">
               Home
+            </Link>
+            <Link to="/terms-conditions" className="text-lg font-medium text-gray-600 hover:text-gray-800">
+              Terms & Conditions
             </Link>
             <Link to="/contact" className="text-lg font-medium text-gray-600 hover:text-gray-800">
               Contact
@@ -57,9 +67,13 @@ const Header = () => {
           <SignedOut>
             <Button
               variant="outline"
-              className="text-gray-600 border-gray-400 hover:bg-gray-100 rounded-full md:px-6"
+              className="group text-gray-200 border-[#173a96] bg-[#173a96] hover:bg-gray-100 rounded-full md:px-6 flex items-center gap-2 hover:text-[#173a96]"
               onClick={() => setShowSignIn(true)}
             >
+              <LogIn
+                size={20}
+                className="text-white group-hover:text-[#173a96] transition-colors"
+              /> {/* Icon color changes on button hover */}
               Login
             </Button>
           </SignedOut>
@@ -129,6 +143,9 @@ const Header = () => {
           </div>
         </div>
       )}
+
+       {/* Add an <hr> line here */}
+    <hr className="border-t-2 border-gray-400 my-4 md:hidden -mt-2 " />
     </>
   );
 };
