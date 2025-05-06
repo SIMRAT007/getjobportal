@@ -47,9 +47,10 @@ const JobListing = () => {
     
         const filteredData = data?.filter((job) => {
           const search = searchQuery.toLowerCase();
+          const companyName = job.company?.name?.toLowerCase() || "";
           return (
             job.title?.toLowerCase().includes(search) ||
-            job.company?.toLowerCase().includes(search) ||
+            companyName?.toLowerCase().includes(search) ||
             job.location?.toLowerCase().includes(search) ||
             job.description?.toLowerCase().includes(search)
           );
