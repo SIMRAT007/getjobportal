@@ -9,13 +9,12 @@ const AllUsersTable = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [userToDelete, setUserToDelete] = useState(null);
 
-  const API_BASE_URL = import.meta.env.VITE_CLERK_API_BASE_URL;
-  console.log("API_BASE_URL:", API_BASE_URL);
+  const API_BASE_URL = import.meta.env.VITE_SERVER_API_BASE_URL;
 
   const fetchUsers = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:5000/users");
+      const res = await axios.get(`${API_BASE_URL}/users`);
       // console.log("Fetched users:", res.data);
       setUsers(res.data);
     } catch (error) {
@@ -38,7 +37,7 @@ const AllUsersTable = () => {
 
     try {
       console.log("Deleting user:", userToDelete);
-      await axios.delete(`http://localhost:5000/users/${userToDelete.id}`);
+      await axios.delete(`${API_BASE_URL}/users/${userToDelete.id}`);
       setUsers(users.filter((u) => u.id !== userToDelete.id));
       setShowPopup(false);
       setUserToDelete(null);
