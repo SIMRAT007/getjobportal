@@ -80,26 +80,28 @@ const AllUsersTable = () => {
               </tr>
             </thead>
             <tbody>
-              {users.map((user) => (
-                <tr key={user.id} className="text-center">
-                   <td className="border border-gray-300 px-4 py-2 text-center">
-                    {new Date(user.created_at).toLocaleDateString()}
-                  </td>
-                  <td className="border border-gray-300 px-4 py-2">{user.email_addresses[0]?.email_address}</td>
-                  <td className="border border-gray-300 px-4 py-2">{user.first_name}</td>
-                  <td className="border border-gray-300 px-4 py-2">{user.last_name}</td>
-                  <td className="border border-gray-300 px-4 py-2">{user.unsafe_metadata.role}</td>
-                  <td className="border border-gray-300 px-4 py-2">
-                    <button
-                      onClick={() => handleDeleteClick(user)}
-                      className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
+  {(users || []).map((user) => (
+    <tr key={user.id} className="text-center">
+      <td className="border border-gray-300 px-4 py-2 text-center">
+        {new Date(user.created_at).toLocaleDateString()}
+      </td>
+      <td className="border border-gray-300 px-4 py-2">
+        {user.email_addresses[0]?.email_address}
+      </td>
+      <td className="border border-gray-300 px-4 py-2">{user.first_name}</td>
+      <td className="border border-gray-300 px-4 py-2">{user.last_name}</td>
+      <td className="border border-gray-300 px-4 py-2">{user.unsafe_metadata?.role}</td>
+      <td className="border border-gray-300 px-4 py-2">
+        <button
+          onClick={() => handleDeleteClick(user)}
+          className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  ))}
+</tbody>
           </table>
         </div>
       )}
