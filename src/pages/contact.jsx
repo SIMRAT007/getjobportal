@@ -88,7 +88,7 @@ const Contact = () => {
       <div style={contactDetailsStyle}>
         <p><strong>Address:</strong> 514 Cory Cres S, Saskatoon, SK S0k 2T0</p>
         <p><strong>Phone:</strong> +1(639)747-0999</p>
-        <p><strong>Email:</strong> optimumsk1a@gmail.com</p>
+        <p><strong>Email:</strong> Destinyjobsca@gmail.com</p>
       </div>
 
       {/* Google Maps Embed */}

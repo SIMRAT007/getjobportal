@@ -43,10 +43,19 @@ const JobListing = () => {
         const data = await getJobs(null, {
           location: location || null,
           company_id: company_id || null,
-          searchQuery: searchQuery || null,
         });
-        console.log("Fetched jobs:", data);
-        setJobs(data || []);
+    
+        const filteredData = data?.filter((job) => {
+          const search = searchQuery.toLowerCase();
+          return (
+            job.title?.toLowerCase().includes(search) ||
+            job.company?.toLowerCase().includes(search) ||
+            job.location?.toLowerCase().includes(search) ||
+            job.description?.toLowerCase().includes(search)
+          );
+        });
+    
+        setJobs(filteredData || []);
       } catch (err) {
         console.error("Job fetch error:", err);
       } finally {
@@ -108,21 +117,22 @@ const JobListing = () => {
       </form>
 
       <div className="flex flex-col sm:flex-row gap-2">
-        <Select value={location} onValueChange={(value) => setLocation(value)}>
+      <Select value={location} onValueChange={(value) => setLocation(value)}>
           <SelectTrigger>
             <SelectValue placeholder="Filter by Location" />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
               {City.getAllCities()
-            .filter((city) => city.countryCode === "CA")
-            .map(({ name }) => {
-                return (
-                  <SelectItem key={name} value={name}>
-                    {name}
-                  </SelectItem>
-                );
-              })}
+                .filter((city) => city.countryCode === "CA")
+                .sort((a, b) => a.name.localeCompare(b.name)) // Sort cities alphabetically
+                .map(({ name }) => {
+                  return (
+                    <SelectItem key={name} value={name}>
+                      {name}
+                    </SelectItem>
+                  );
+                })}
             </SelectGroup>
           </SelectContent>
         </Select>

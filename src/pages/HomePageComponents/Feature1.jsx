@@ -40,12 +40,12 @@ export default function Feature1() {
             </div>
           </div>
           <img
-            alt="Platform screenshot"
-            src="https://i.pinimg.com/736x/bd/c6/24/bdc6247d1c8ebafd95db73f665adabd4.jpg"
-            width={2432}
-            height={1442}
-            className="w-[48rem] max-w-none rounded-xl ring-1 shadow-xl ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0 max-sm:w-[20rem]"
-          />
+  alt="Platform screenshot"
+  src="https://i.pinimg.com/736x/bd/c6/24/bdc6247d1c8ebafd95db73f665adabd4.jpg"
+  width={2432}
+  height={1442}
+  className="w-[14rem] sm:w-[48rem] max-w-none rounded-xl ring-1 shadow-xl ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0 mx-auto"
+/>
         </div>
       </div>
     </div>

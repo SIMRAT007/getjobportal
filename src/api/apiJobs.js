@@ -133,8 +133,8 @@ export async function getMyJobs(token, { recruiter_id }) {
 }
 
 // Delete job
-export async function deleteJob(token, { job_id }) {
-  const supabase = await supabaseClient(token);
+export async function deleteJob({ job_id }) {
+  const supabase = await supabaseClient();
 
   const { data, error: deleteError } = await supabase
     .from("jobs")

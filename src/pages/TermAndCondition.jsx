@@ -84,7 +84,7 @@ You agree that the original English text shall prevail in the case of a dispute.
 <p>If you have any questions about these Terms and Conditions, You can contact us:</p>
 <ul>
 <li>
-<p>By email: optimumsk1a@gmail.com</p>
+<p>By email: Destinyjobsca@gmail.com</p>
 </li>
 <li>
 <p>By visiting this page on our website: <a href="https://destinyjobs.ca/contact" rel="external nofollow noopener" target="_blank">https://destinyjobs.ca/contact</a></p>

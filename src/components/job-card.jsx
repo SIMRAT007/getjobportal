@@ -86,7 +86,7 @@ const JobCard = ({
       </CardHeader>
       <CardContent className="flex flex-col gap-4 flex-1">
         <div className="flex justify-between">
-          {job.company && <img src={job.company.logo_url} className="h-6" />}
+          {job.company && <img src={job.company.logo_url} className="h-10" />}
           <div className="flex gap-2 items-center">
             <MapPinIcon size={15} /> {job.location}
           </div>

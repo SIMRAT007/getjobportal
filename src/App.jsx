@@ -16,6 +16,13 @@ import TermAndCondition from "./pages/TermAndCondition";
 
 import "./App.css";
 import Main from "./pages/Main";
+import AdminGate from "./pages/Adminpanel/AdminGate";
+// import AdminHomepage from "./pages/Adminpanel/AdminHomepage";
+import Alljobs from "./pages/Adminpanel/Alljobs";
+import AdminAppLayout from "./pages/Adminpanel/AdminAppLayout";
+import AllUsers from "./pages/Adminpanel/AllUsers";
+
+import { Navigate } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
@@ -85,8 +92,35 @@ const router = createBrowserRouter([
             <TermAndCondition/>
         ),
       },
+      {
+        path: "/admin-portal",
+        element: (
+            <AdminGate>
+              {/* <AdminAppLayout/> */}
+              <Navigate to="/adminportal-all-jobs" replace />
+            </AdminGate>
+        ),
+      },
     ],
   },
+
+  {
+    element: <AdminAppLayout/>,
+    children: [
+      {
+        path: "/adminportal-all-jobs",
+        element: (
+              <Alljobs/>
+        ),
+      },
+      {
+        path: "/adminportal-all-users",
+        element: (
+              <AllUsers/>
+        ),
+      }
+    ]
+  }
 ]);
 
 function App() {
