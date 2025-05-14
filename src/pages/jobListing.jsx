@@ -28,10 +28,11 @@ const JobListing = () => {
   const { isLoaded } = useUser();
 
   const {
-    // loading: loadingCompanies,
     data: companies,
     fn: fnCompanies,
-  } = useFetch(getCompanies);
+    error: companiesError,
+  } = useFetch(getCompanies, { requireAuth: false });
+  
 
   const [jobs, setJobs] = useState([]);
   const [loadingJobs, setLoadingJobs] = useState(true);
@@ -67,17 +68,14 @@ const JobListing = () => {
     fetchJobs();
   }, [location, company_id, searchQuery]);
 
-  // useEffect(() => {
-  //   if (isLoaded) {
-  //     fnCompanies();
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [isLoaded]);
 
   useEffect(() => {
     if (isLoaded) fnCompanies();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoaded, location, company_id, searchQuery]);
+  
+  if (companiesError) {
+    console.error("Error fetching companies:", companiesError);
+  }
 
   const handleSearch = (e) => {
     e.preventDefault();

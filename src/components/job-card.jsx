@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Heart, MapPinIcon, Trash2Icon } from "lucide-react";
+import { Heart, MapPinIcon, Trash2Icon, Edit } from "lucide-react";
 import { Button } from "./ui/button";
 import {
   Card,
@@ -14,17 +14,17 @@ import { deleteJob, saveJob } from "@/api/apiJobs";
 import { useUser } from "@clerk/clerk-react";
 import { useEffect, useState } from "react";
 import { BarLoader } from "react-spinners";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 
 const JobCard = ({
   job,
   savedInit = false,
-  onJobAction = () => {},
+  onJobAction = () => { },
   isMyJob = false,
 }) => {
   const [saved, setSaved] = useState(savedInit);
 
-  const { user,isSignedIn } = useUser();
+  const { user, isSignedIn } = useUser();
   const navigate = useNavigate(); // Hook for navigation
 
   const { loading: loadingDeleteJob, fn: fnDeleteJob } = useFetch(deleteJob, {
@@ -35,9 +35,15 @@ const JobCard = ({
     loading: loadingSavedJob,
     data: savedJob,
     fn: fnSavedJob,
-  } = useFetch(saveJob,{alreadySaved:saved});
+  } = useFetch(saveJob, { alreadySaved: saved });
 
   const handleSaveJob = async () => {
+    if (!isSignedIn) {
+      // Show a popup if the user is not signed in
+      window.alert("Please login to save jobs as favorites!");
+      return;
+    }
+    
     await fnSavedJob({
       user_id: user.id,
       job_id: job.id,
@@ -75,12 +81,20 @@ const JobCard = ({
         <CardTitle className="flex justify-between font-bold">
           {job.title}
           {isMyJob && (
-            <Trash2Icon
-              fill="red"
-              size={28}
-              className="text-red-300 cursor-pointer"
-              onClick={handleDeleteJob}
-            />
+            <div className="flex gap-4"> {/* Added a container with reduced gap */}
+              <Edit
+                fill="blue"
+                size={28}
+                className="text-blue-100 cursor-pointer"
+                onClick={() => navigate(`/edit-job/${job.id}`)}
+              />
+              <Trash2Icon
+                fill="red"
+                size={28}
+                className="text-red-300 cursor-pointer"
+                onClick={handleDeleteJob}
+              />
+            </div>
           )}
         </CardTitle>
       </CardHeader>
@@ -96,7 +110,7 @@ const JobCard = ({
       </CardContent>
       <CardFooter className="flex gap-2">
         <Link to={`/job/${job.id}`} className="flex-1">
-        <Button
+          <Button
             variant="secondary"
             className="w-full bg-[#173a96] text-white hover:bg-blue-600"
             onClick={handleMoreDetailsClick} // Add onClick handler

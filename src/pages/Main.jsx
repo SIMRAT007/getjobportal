@@ -1,5 +1,5 @@
 import React from 'react'
-import LandingPage from './landing'
+import LandingPage from './HomePageComponents/landing'
 import Companies from './HomePageComponents/Companies'
 import Faq from './HomePageComponents/Faq'
 import Blogs from './HomePageComponents/Blogs'
@@ -20,7 +20,10 @@ const Main = () => {
   return (
     <>
       {/* Landing Section */}
+      <div className='bg-gradient-to-t from-blue-300 to-tranparent'>
       <LandingPage />
+      </div>
+    
       <Companies />
       <Feature1 />
       <Stats />

@@ -98,6 +98,63 @@ export async function saveJob(token, { alreadySaved }, saveData) {
   }
 }
 
+//Update job
+export const getJobById = async (id) => {
+  const supabase = await supabaseClient(); // Initialize Supabase without a token
+  const { data, error } = await supabase
+    .from("jobs")
+    .select("*, company: companies(name, logo_url)")
+    .eq("id", id)
+    .single(); // Fetch a single job by ID
+
+  if (error) {
+    console.error("Error fetching job by ID:", error);
+    return null;
+  }
+
+  return data;
+};
+
+// export const updateJob = async ({ id, ...job }) => {
+//   const supabase = await supabaseClient(); // Initialize Supabase without a token
+
+//   const { data, error } = await supabase
+//     .from("jobs")
+//     .update(job) // Update the job with the provided data
+//     .eq("id", id) // Match the job by ID
+//     .select(); // Return the updated job
+
+//   if (error) {
+//     console.error("Error updating job:", error);
+//     throw new Error("Failed to update job");
+//   }
+
+//   return data;
+// };
+
+export const updateJob = async (job) => {
+  const supabase = await supabaseClient();
+
+  const { data, error } = await supabase
+    .from("jobs")
+    .update({
+      title: job.title,
+      description: job.description,
+      location: job.location,
+      requirements: job.requirements,
+      isOpen: job.isOpen,
+      company_id: job.company_id, // Use company_id instead of company_logo
+    })
+    .eq("id", job.id); // Match the job by its ID
+
+  if (error) {
+    console.error("Error updating job:", error);
+    throw new Error("Failed to update job");
+  }
+
+  return data;
+};
+
 // - job isOpen toggle - (recruiter_id = auth.uid())
 export async function updateHiringStatus(token, { job_id }, isOpen) {
   const supabase = await supabaseClient(token);
@@ -133,7 +190,7 @@ export async function getMyJobs(token, { recruiter_id }) {
 }
 
 // Delete job
-export async function deleteJob({ job_id }) {
+export async function admindeleteJob({ job_id }) {
   const supabase = await supabaseClient();
 
   const { data, error: deleteError } = await supabase
@@ -145,6 +202,23 @@ export async function deleteJob({ job_id }) {
   if (deleteError) {
     console.error("Error deleting job:", deleteError);
     return data;
+  }
+
+  return data;
+}
+
+export async function deleteJob(token, { job_id }) {
+  const supabase = await supabaseClient(token); // Pass the token for authentication
+
+  const { data, error: deleteError } = await supabase
+    .from("jobs")
+    .delete()
+    .eq("id", job_id)
+    .select();
+
+  if (deleteError) {
+    console.error("Error deleting job:", deleteError);
+    return null;
   }
 
   return data;

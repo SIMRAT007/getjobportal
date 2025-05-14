@@ -4,7 +4,7 @@ import AppLayout from "./layouts/app-layout";
 import ProtectedRoute from "./components/protected-route";
 import { ThemeProvider } from "./components/theme-provider";
 
-import LandingPage from "./pages/landing";
+import LandingPage from "./pages/HomePageComponents/landing";
 import Onboarding from "./pages/onboarding";
 import PostJob from "./pages/post-job";
 import JobListing from "./pages/jobListing";
@@ -23,6 +23,8 @@ import AdminAppLayout from "./pages/Adminpanel/AdminAppLayout";
 import AllUsers from "./pages/Adminpanel/AllUsers";
 
 import { Navigate } from "react-router-dom";
+import EditJob from "./components/EditJob";
+import AdminJobEdit from "./pages/Adminpanel/AdminJobEdit";
 
 const router = createBrowserRouter([
   {
@@ -92,6 +94,16 @@ const router = createBrowserRouter([
             <TermAndCondition/>
         ),
       },
+       {
+        path: "/edit-job/:id",
+        element: (
+            <EditJob/>
+        ),
+      },
+      // {
+      //   path: "/admin-edit-job/:id",
+      //   element: <AdminJobEdit/>,
+      // },
       {
         path: "/admin-portal",
         element: (
@@ -105,7 +117,7 @@ const router = createBrowserRouter([
   },
 
   {
-    element: <AdminAppLayout/>,
+    element: <><AdminGate><AdminAppLayout/></AdminGate></>,
     children: [
       {
         path: "/adminportal-all-jobs",

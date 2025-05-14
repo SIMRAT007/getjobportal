@@ -41,7 +41,7 @@ const Header = () => {
 
   return (
     <>
-      <nav className="py-4 mt-2 flex justify-between items-center mb-5 md:px-8 md:rounded-full md:mt-5 md:border md:border-2 md:border-dashed md:border-gray-500 md:shadow-2xl md:backdrop-blur container max-lg:w-[95%] max-2xl:w-[95%]">
+      <nav className="py-4 mt-2 flex justify-between items-center mb-5 md:px-8 md:rounded-full md:mt-5 md:border md:border-2 md:border-dashed md:border-gray-500 md:shadow-2xl md:backdrop-blur container max-lg:w-[95%] max-2xl:w-[95%] ">
         <Link to="/">
           {/* <p className="md:text-4xl text-2xl italic text-gray-600">Destiny Jobs</p> */}
           <img

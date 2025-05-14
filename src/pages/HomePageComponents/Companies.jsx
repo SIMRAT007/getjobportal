@@ -15,7 +15,7 @@ const Companies = () => {
                 delay: 2000,
               }),
             ]}
-            className="w-full pt-5 pb-5 max-sm:pt-5 max-sm:pb-5 bg-[#173a96] mt-10 md:mt-20"
+            className="w-full pt-5 pb-5 max-sm:pt-5 max-sm:pb-5 bg-[#173a96] mt-0 md:-mt-10"
           >
             <CarouselContent className="flex gap-5 sm:gap-20 items-center py-12 max-sm:py-2">
               {companies.map(({ name, id, path }) => (
