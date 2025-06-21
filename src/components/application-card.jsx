@@ -77,6 +77,7 @@ const ApplicationCard = ({ application, isCandidate = false }) => {
             Status: {application.status}
           </span>
         ) : (
+          <>
           <Select
             onValueChange={handleStatusChange}
             defaultValue={application.status}
@@ -91,6 +92,7 @@ const ApplicationCard = ({ application, isCandidate = false }) => {
               <SelectItem value="rejected">Rejected</SelectItem>
             </SelectContent>
           </Select>
+          </>
         )}
       </CardFooter>
     </Card>

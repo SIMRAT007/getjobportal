@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import VideoView from '@/components/videoview';
-import WhyUs1_Mobile from '../../../public/whyus1_mobile.mp4';
-import WhyUs1_web from '../../../public/whyus1_web.mp4';
-import WhyUs2_Mobile from '../../../public/whyus2_mobile.mp4';
-import WhyUs2_web from '../../../public/whyus2_web.mp4';
+import WhyUs1_Mobile from '../../assets/whyus1_mobile.mp4';
+import WhyUs1_web from '../../assets/whyus1_web.mp4';
+import WhyUs2_Mobile from '../../assets/whyus2_mobile.mp4';
+import WhyUs2_web from '../../assets/whyus2_web.mp4';
 
 const WhyUs = () => {
     const [activeContent, setActiveContent] = useState('jobSeekers');

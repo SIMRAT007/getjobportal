@@ -1,15 +1,13 @@
 import { useUser } from "@clerk/clerk-react";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { BarLoader } from "react-spinners";
 
 const Onboarding = () => {
   const { user, isLoaded } = useUser();
-  const navigate = useNavigate();
 
   const navigateUser = (currRole) => {
-    navigate(currRole === "recruiter" ? "/post-job" : "/jobs");
+    window.location.href = currRole === "recruiter" ? "/post-job" : "/jobs";
   };
 
   const handleRoleSelection = async (role) => {

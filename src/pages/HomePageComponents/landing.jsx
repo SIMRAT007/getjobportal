@@ -1,19 +1,17 @@
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useUser } from "@clerk/clerk-react";
-import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion"; // Import Framer Motion
-import MOC from "../../../public/moc.png"; // Adjust the path as necessary
+import MOC from "../../assets/moc.png"; // Adjust the path as necessary
 
 const LandingPage = () => {
   const { user } = useUser();
-  const navigate = useNavigate();
 
   const handleFindJobs = () => {
     if (!user) {
-      navigate("/?sign-in=true"); // triggers sign-in modal
+      window.location.href = "/?sign-in=true"; // triggers sign-in modal
     } else {
-      navigate("/jobs");
+      window.location.href = "/jobs";
     }
   };
 
@@ -76,11 +74,14 @@ const LandingPage = () => {
           >
             Find Jobs
           </Button>
-          <Link to={"/post-job"}>
-            <Button variant="destructive" size="xl" className="text-black">
-              Post a Job
-            </Button>
-          </Link>
+          <Button 
+            variant="destructive" 
+            size="xl" 
+            className="text-black"
+            onClick={() => window.location.href = "/post-job"}
+          >
+            Post a Job
+          </Button>
         </div>
         {/* Add the image below the buttons */}
         <div className="mt-10 w-[100%]">

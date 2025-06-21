@@ -8,13 +8,11 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { Link } from "react-router-dom";
 import useFetch from "@/hooks/use-fetch";
 import { deleteJob, saveJob } from "@/api/apiJobs";
 import { useUser } from "@clerk/clerk-react";
 import { useEffect, useState } from "react";
 import { BarLoader } from "react-spinners";
-import { useNavigate } from "react-router-dom";
 
 const JobCard = ({
   job,
@@ -25,7 +23,7 @@ const JobCard = ({
   const [saved, setSaved] = useState(savedInit);
 
   const { user, isSignedIn } = useUser();
-  const navigate = useNavigate(); // Hook for navigation
+  // Replace navigate with direct window.location
 
   const { loading: loadingDeleteJob, fn: fnDeleteJob } = useFetch(deleteJob, {
     job_id: job.id,
@@ -60,11 +58,11 @@ const JobCard = ({
     if (!isSignedIn) {
       window.alert("You Need To Login To Apply For Jobs, Click OK To Try Again!");
       setTimeout(() => {
-        navigate("/jobs"); // Redirect to /jobs page
+        window.location.href = "/jobs"; // Redirect to /jobs page
       }, 100);
     } else {
       console.log("simrat else")
-      navigate(`/job/${job.id}`); // Navigate to job details page if signed in
+      window.location.href = `/job/${job.id}`; // Navigate to job details page if signed in
     }
   };
 
@@ -73,11 +71,11 @@ const JobCard = ({
   }, [savedJob]);
 
   return (
-    <Card className="flex flex-col">
+    <Card className="flex flex-col bg-gray-200">
       {loadingDeleteJob && (
         <BarLoader className="mt-4" width={"100%"} color="#36d7b7" />
       )}
-      <CardHeader className="flex">
+      <CardHeader className="flex ">
         <CardTitle className="flex justify-between font-bold">
           {job.title}
           {isMyJob && (
@@ -86,7 +84,7 @@ const JobCard = ({
                 fill="blue"
                 size={28}
                 className="text-blue-100 cursor-pointer"
-                onClick={() => navigate(`/edit-job/${job.id}`)}
+                onClick={() => window.location.href = `/edit-job/${job.id}`}
               />
               <Trash2Icon
                 fill="red"
@@ -109,15 +107,15 @@ const JobCard = ({
         {job.description.substring(0, job.description.indexOf("."))}.
       </CardContent>
       <CardFooter className="flex gap-2">
-        <Link to={`/job/${job.id}`} className="flex-1">
+        <div className="flex-1">
           <Button
             variant="secondary"
             className="w-full bg-[#173a96] text-white hover:bg-blue-600"
-            onClick={handleMoreDetailsClick} // Add onClick handler
+            onClick={handleMoreDetailsClick} // Use onClick handler
           >
             More Details
           </Button>
-        </Link>
+        </div>
         {!isMyJob && (
           <Button
             variant="outline"

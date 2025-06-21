@@ -9,9 +9,9 @@ import {
 
 const Faq = () => {
   return (
-    <Accordion type="multiple" className="w-full container">
+    <Accordion type="multiple" className="w-full container border-none">
         {faqs.map((faq, index) => (
-          <AccordionItem key={index} value={`item-${index + 1}`} className="border-b-gray-600 border-2">
+          <AccordionItem key={index} value={`item-${index + 1}`} className="border-b-gray-600">
             <AccordionTrigger className="hover:no-underline">{faq.question}</AccordionTrigger>
             <AccordionContent>{faq.answer}</AccordionContent>
           </AccordionItem>

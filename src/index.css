@@ -94,6 +94,39 @@
   }
 }
 
+/* Enhanced Form Styles */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236B7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+}
+
+select:focus {
+  outline: none;
+  border-color: #3B82F6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.form-select-container {
+  position: relative;
+}
+
+.form-select-container::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1rem;
+  background-color: currentColor;
+  clip-path: polygon(50% 75%, 100% 25%, 0 25%);
+  pointer-events: none;
+}
+
 
 .oval-highlight {
   display: inline-block; /* Ensures it stays inline */
@@ -139,6 +172,47 @@ div.w-md-editor-toolbar button {
 
 div.custom-md-editor.w-md-editor-preview ol li::marker {
   color: black;
+}
+
+/* Enhanced MD Editor Styles */
+.custom-md-editor {
+  border: none !important;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.custom-md-editor .w-md-editor-toolbar {
+  background: #f8fafc !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+
+.custom-md-editor .w-md-editor-toolbar button {
+  color: #475569 !important;
+  background: transparent !important;
+}
+
+.custom-md-editor .w-md-editor-toolbar button:hover {
+  color: #2563eb !important;
+  background: #f1f5f9 !important;
+}
+
+.custom-md-editor .w-md-editor-text {
+  padding: 1rem !important;
+}
+
+.custom-md-editor .w-md-editor-preview {
+  box-shadow: inset 1px 0 0 #e2e8f0 !important;
+  padding: 1rem !important;
+}
+
+.custom-md-editor .w-md-editor-text-pre > code,
+.custom-md-editor .w-md-editor-text-input {
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+}
+
+.custom-md-editor .wmde-markdown {
+  font-size: 0.875rem !important;
 }
 
 

@@ -12,34 +12,46 @@ const CreatedJobs = () => {
     loading: loadingCreatedJobs,
     data: createdJobs,
     fn: fnCreatedJobs,
+    error,
   } = useFetch(getMyJobs, {
-    recruiter_id: user.id,
+    recruiter_id: user?.id,
   });
 
   useEffect(() => {
-    fnCreatedJobs();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    if (user?.id) {
+      fnCreatedJobs();
+    }
+  }, [user]);
+
+  if (error) {
+    return (
+      <div className="text-red-500 p-4">
+        Error loading jobs. Please try again.
+      </div>
+    );
+  }
 
   return (
     <div>
       {loadingCreatedJobs ? (
-        <BarLoader className="mt-4" width={"100%"} color="#36d7b7" />
+        <div className="flex justify-center items-center min-h-[200px]">
+          <BarLoader width={200} color="#36d7b7" />
+        </div>
       ) : (
         <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {createdJobs?.length ? (
-            createdJobs.map((job) => {
-              return (
-                <JobCard
-                  key={job.id}
-                  job={job}
-                  onJobAction={fnCreatedJobs}
-                  isMyJob
-                />
-              );
-            })
+          {createdJobs?.length > 0 ? (
+            createdJobs.map((job) => (
+              <JobCard
+                key={job.id}
+                job={job}
+                onJobAction={fnCreatedJobs}
+                isMyJob
+              />
+            ))
           ) : (
-            <div>No Jobs Found 😢</div>
+            <div className="col-span-full text-center text-gray-500 py-8">
+              No Jobs Found 😢
+            </div>
           )}
         </div>
       )}

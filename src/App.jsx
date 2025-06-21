@@ -1,10 +1,10 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-
-import AppLayout from "./layouts/app-layout";
-import ProtectedRoute from "./components/protected-route";
 import { ThemeProvider } from "./components/theme-provider";
+import AppLayout from "./layouts/app-layout";
+import "./App.css";
+import Main from "./pages/Main";
 
-import LandingPage from "./pages/HomePageComponents/landing";
+import ProtectedRoute from "./components/protected-route";
 import Onboarding from "./pages/onboarding";
 import PostJob from "./pages/post-job";
 import JobListing from "./pages/jobListing";
@@ -14,17 +14,14 @@ import JobPage from "./pages/job";
 import Contact from "./pages/contact";
 import TermAndCondition from "./pages/TermAndCondition";
 
-import "./App.css";
-import Main from "./pages/Main";
 import AdminGate from "./pages/Adminpanel/AdminGate";
-// import AdminHomepage from "./pages/Adminpanel/AdminHomepage";
 import Alljobs from "./pages/Adminpanel/Alljobs";
 import AdminAppLayout from "./pages/Adminpanel/AdminAppLayout";
 import AllUsers from "./pages/Adminpanel/AllUsers";
-
 import { Navigate } from "react-router-dom";
 import EditJob from "./components/EditJob";
-import AdminJobEdit from "./pages/Adminpanel/AdminJobEdit";
+// import AdminJobEdit from "./pages/Adminpanel/AdminJobEdit";
+import NotFound from "./pages/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -45,9 +42,7 @@ const router = createBrowserRouter([
       {
         path: "/jobs",
         element: (
-          // <ProtectedRoute>
             <JobListing />
-          // </ProtectedRoute>
         ),
       },
       {
@@ -132,6 +127,10 @@ const router = createBrowserRouter([
         ),
       }
     ]
+  },
+  {
+    path: "*",
+    element: <NotFound />
   }
 ]);
 
@@ -144,3 +143,12 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
+
+
+
+

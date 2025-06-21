@@ -1,6 +1,6 @@
 // src/components/Header.tsx
 import { useEffect, useState } from "react";
-import { Link, useSearchParams, useNavigate } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import {
   SignedIn,
   SignedOut,
@@ -11,57 +11,57 @@ import {
 import { Button } from "./ui/button";
 import { BriefcaseBusiness, Heart, PenBox } from "lucide-react";
 import { setGuestMode, clearGuestMode } from "@/utils/guestUtils";
-import Logo from "../../public/logo.png";
+import Logo from "../assets/logo.png";
 import { LogIn } from "lucide-react";
 
 const Header = () => {
   const [showSignIn, setShowSignIn] = useState(false);
-  const [search, setSearch] = useSearchParams();
+  // const [search, setSearch] = useSearchParams();
   const { user } = useUser();
-  const navigate = useNavigate();
 
   useEffect(() => {
-    if (search.get("sign-in")) {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("sign-in")) {
       setShowSignIn(true);
     }
-  }, [search]);
+  }, []);
 
   useEffect(() => {
     if (user) {
-      clearGuestMode(); // Remove guest mode when user logs in
+      clearGuestMode(); 
     }
   }, [user]);
 
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) {
       setShowSignIn(false);
-      setSearch({});
+      // setSearch({});
     }
   };
 
   return (
     <>
       <nav className="py-4 mt-2 flex justify-between items-center mb-5 md:px-8 md:rounded-full md:mt-5 md:border md:border-2 md:border-dashed md:border-gray-500 md:shadow-2xl md:backdrop-blur container max-lg:w-[95%] max-2xl:w-[95%] ">
-        <Link to="/">
+        <a href="/" onClick={(e) => { e.preventDefault(); window.location.href = "/"; }}>
           {/* <p className="md:text-4xl text-2xl italic text-gray-600">Destiny Jobs</p> */}
           <img
             src={Logo}
             alt="Destiny Jobs Logo"
             className="w-[80%] md:w-44 h-auto"
           />
-        </Link>
+        </a>
 
         <div className="flex gap-8">
           <div className="hidden md:flex gap-8 mt-2">
-            <Link to="/" className="text-lg font-medium text-gray-600 hover:text-gray-800">
+            <a href="/" onClick={(e) => { e.preventDefault(); window.location.href = "/"; }} className="text-lg font-medium text-gray-600 hover:text-gray-800">
               Home
-            </Link>
-            <Link to="/terms-conditions" className="text-lg font-medium text-gray-600 hover:text-gray-800">
+            </a>
+            <a href="/terms-conditions" onClick={(e) => { e.preventDefault(); window.location.href = "/terms-conditions"; }} className="text-lg font-medium text-gray-600 hover:text-gray-800">
               Terms & Conditions
-            </Link>
-            <Link to="/contact" className="text-lg font-medium text-gray-600 hover:text-gray-800">
+            </a>
+            <a href="/contact" onClick={(e) => { e.preventDefault(); window.location.href = "/contact"; }} className="text-lg font-medium text-gray-600 hover:text-gray-800">
               Contact
-            </Link>
+            </a>
           </div>
 
           <SignedOut>
@@ -73,22 +73,23 @@ const Header = () => {
               <LogIn
                 size={20}
                 className="text-white group-hover:text-[#173a96] transition-colors"
-              /> {/* Icon color changes on button hover */}
+              /> 
               Login
             </Button>
           </SignedOut>
 
           <SignedIn>
             {user?.unsafeMetadata?.role === "recruiter" && (
-              <Link to="/post-job">
-                <Button
-                  variant="destructive"
-                  className="rounded-full bg-red-500 text-white hover:bg-red-600"
-                >
-                  <PenBox size={20} className="mr-2" />
-                  Post a Job
-                </Button>
-              </Link>
+              <>
+               <Button
+                variant="destructive"
+                className="rounded-full bg-red-500 text-white hover:bg-red-600"
+                onClick={() => window.location.href = "/post-job"}
+              >
+                <PenBox size={20} className="mr-2" />
+                Post a Job
+              </Button>
+              </>
             )}
             <UserButton
               appearance={{
@@ -135,7 +136,7 @@ const Header = () => {
               onClick={() => {
                 setGuestMode();
                 setShowSignIn(false);
-                navigate("/jobs");
+                window.location.href = "/jobs";
               }}
             >
               Continue as Guest

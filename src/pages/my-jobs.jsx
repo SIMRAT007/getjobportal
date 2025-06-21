@@ -12,15 +12,15 @@ const MyJobs = () => {
 
   return (
     <div className="container">
-      <h1 className="gradient-title font-extrabold text-5xl sm:text-7xl text-center pb-8 md:mt-10">
+      <h1 className="gradient-title font-extrabold text-5xl sm:text-7xl text-center pb-8 md:mt-10 max-md:mt-5">
         {user?.unsafeMetadata?.role === "candidate"
           ? "My Applications"
           : "My Jobs"}
       </h1>
       {user?.unsafeMetadata?.role === "candidate" ? (
-        <CreatedApplications />
+        <><CreatedApplications /> </>
       ) : (
-        <CreatedJobs />
+        <><CreatedJobs /></>
       )}
     </div>
   );

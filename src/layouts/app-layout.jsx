@@ -1,5 +1,5 @@
 import Header from "@/components/header";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, Link } from "react-router-dom";
 
 const AppLayout = () => {
   const location = useLocation();
@@ -18,10 +18,22 @@ const AppLayout = () => {
         {AdminPanel && <Header />}
         <Outlet />
       </main>
+
+      {/* Footer section */}
       {AdminPanel && 
-      <div className="p-10 text-center bg-[#173a96] mt-10 text-white">
-      Copyright © 2025 by Destiny Jobs
-    </div>
+      <footer className="p-10 bg-[#173a96] mt-10 text-white">
+        <div className="flex flex-col items-center space-y-4">
+          <div className="flex items-center space-x-8">
+            <Link to="/" className="hover:text-blue-200 transition-colors">Home</Link>
+            <Link to="/contact" className="hover:text-blue-200 transition-colors">Contact</Link>
+            <Link to="/terms-conditions" className="hover:text-blue-200 transition-colors">Terms & Conditions</Link>
+          </div>
+          <hr className="w-full border-gray-500 my-4" />
+          <div className="text-cente">
+            Copyright © 2025 by Destiny Jobs
+          </div>
+        </div>
+      </footer>
     }
       
     </div>

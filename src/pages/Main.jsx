@@ -4,14 +4,9 @@ import Companies from './HomePageComponents/Companies'
 import Faq from './HomePageComponents/Faq'
 import Blogs from './HomePageComponents/Blogs'
 import Testimonials from './HomePageComponents/Testimonials'
-// import GalleryVideos from './HomePageComponents/GalleryVideos'
-// import ContactUs from './HomePageComponents/ContactUs'
-// import WhyChooseUs from './HomePageComponents/WhyChooseUs'
 import Header from '../pages/HomePageComponents/Header'
-// import About from './HomePageComponents/About'
 import Stats from './HomePageComponents/Stats'
 import Feature1 from './HomePageComponents/Feature1'
-import Feature2 from './HomePageComponents/Feature2'
 import WhyUs from './HomePageComponents/WhyUs'
 import Cta from './HomePageComponents/Cta'
 import JobList from './HomePageComponents/joblist'
@@ -24,22 +19,28 @@ const Main = () => {
       <LandingPage />
       </div>
     
+      {/* Companies Section */}
       <Companies />
+
+      {/* Feature Section */}
       <Feature1 />
+
+      {/* Stats */}
       <Stats />
+
+      {/* Why Us Section */}
       <Header
         text1="Why Us?"
         text3="Unlock your true potential with a seamless experience to post jobs, hire top talent, search for opportunities, and apply effortlessly. Discover a world of possibilities that align with your skills, interests, and aspirations."
       />
       <WhyUs/>
 
+      {/* Jobs List */}
       <Header
         text1="Latest Jobs"
         text3="We Empower Job Seekers Like You To Streamline And Supercharge Your Job Search"
       />
       <JobList/>
-      
-      {/* <Feature2 /> */}
 
       {/* Testimonials Section */}
       <Header
@@ -56,6 +57,7 @@ const Main = () => {
       />
       <Blogs />
 
+     {/* Call to Action Section xx */}
       <Cta/>
 
       {/* FAQ Section */}
@@ -64,8 +66,6 @@ const Main = () => {
         text3="Have questions? Find answers to the most common queries about our platform and services."
       />
       <Faq />
-
-
 
     </>
   )

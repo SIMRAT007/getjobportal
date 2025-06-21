@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getJobById, updateJob } from "@/api/apiJobs";
 import useFetch from "@/hooks/use-fetch";
 import { useEffect } from "react";
@@ -19,7 +19,6 @@ const schema = z.object({
 
 const AdminJobEdit = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
 
   const {
     data: jobData,
@@ -60,7 +59,7 @@ const AdminJobEdit = () => {
     try {
       const updatedJob = await updateJob({ id, ...data });
       console.log("Job updated successfully:", updatedJob);
-      navigate("/admin-portal"); // Redirect to admin portal after successful update
+      window.location.href = "/admin-portal"; // Redirect to admin portal after successful update
     } catch (error) {
       console.error("Error updating job:", error);
       alert("Failed to update job. Please try again.");

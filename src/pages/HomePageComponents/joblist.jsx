@@ -6,14 +6,12 @@ import { getJobs } from "@/api/apiJobs";
 
 import JobCard from "@/components/job-card";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom"; // for navigation
 
 const TopJobs = () => {
   const [jobs, setJobs] = useState([]);
   const [loadingJobs, setLoadingJobs] = useState(true);
 
   const { isLoaded } = useUser();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -55,11 +53,13 @@ const TopJobs = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max:md-p-10">
           {jobs.length ? (
             jobs.map((job) => (
+              <>
               <JobCard
                 key={job.id}
                 job={job}
                 savedInit={job?.saved?.length > 0}
               />
+              </>
             ))
           ) : (
             <div className="col-span-full text-center text-gray-500">
@@ -73,7 +73,7 @@ const TopJobs = () => {
         <Button
           variant="blue"
           className="px-6 py-3 text-white text-lg font-semibold bg-[#173a96]"
-          onClick={() => navigate("/jobs")} // update route if needed
+          onClick={() => window.location.href = "/jobs"}
         >
           View More Jobs
         </Button>

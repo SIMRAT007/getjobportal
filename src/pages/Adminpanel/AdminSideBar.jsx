@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { NavLink, useNavigate} from "react-router-dom";
 import {
   FaAngleDoubleLeft,
   FaAngleDoubleRight,
@@ -7,11 +6,10 @@ import {
   FaGem,
   FaSignOutAlt
 } from "react-icons/fa";
-import { supabase } from "../../utils/supabase"; // Import supabase client
+import { supabase } from "../../utils/supabase"; 
 
 const AdminSideBar = () => {
   const [collapsed, setCollapsed] = useState(false);
-  const navigate = useNavigate();
 
   const toggleSidebar = () => setCollapsed(!collapsed);
 
@@ -19,15 +17,16 @@ const AdminSideBar = () => {
   const handleLogout = async () => {
     try {
       await supabase.auth.signOut(); // Sign out the user
-      navigate("/admin-portal"); // Redirect to the admin login page
+      window.location.href = "/admin-portal"; // Redirect to the admin login page
     } catch (error) {
       console.error("Error logging out:", error);
     }
   };
 
   return (
+    <>
     <div
-      className={`h-screen bg-[#173a96]  text-white flex flex-col transition-all duration-300 ${
+      className={`min-h-screen bg-[#173a96]  text-white flex flex-col transition-all duration-300 ${
         collapsed ? "w-20" : "w-64"
       }`}
     >
@@ -41,29 +40,21 @@ const AdminSideBar = () => {
 
       {/* Menu */}
       <nav className="flex-1 px-2 py-4 space-y-2">
-        <NavLink
-          to="/adminportal-all-jobs"
-          className={({ isActive }) =>
-            `flex items-center gap-3 px-4 py-2 rounded hover:bg-blue-500 ${
-              isActive ? "bg-blue-500" : ""
-            }`
-          }
+        <button
+          onClick={() => window.location.href = '/adminportal-all-jobs'}
+          className="flex items-center gap-3 px-4 py-2 rounded hover:bg-blue-500 w-full text-left"
         >
           <FaTachometerAlt />
           {!collapsed && <span>All Jobs </span>}
-        </NavLink>
+        </button>
 
-        <NavLink
-          to="/adminportal-all-users"
-          className={({ isActive }) =>
-            `flex items-center gap-3 px-4 py-2 rounded hover:bg-blue-500 ${
-              isActive ? "bg-blue-500" : ""
-            }`
-          }
+        <button
+          onClick={() => window.location.href = '/adminportal-all-users'}
+          className="flex items-center gap-3 px-4 py-2 rounded hover:bg-blue-500 w-full text-left"
         >
           <FaGem />
           {!collapsed && <span>All Users</span>}
-        </NavLink>
+        </button>
       </nav>
 
        {/* Logout Button */}
@@ -82,6 +73,7 @@ const AdminSideBar = () => {
         {!collapsed && <p>© DestinyJobs</p>}
       </div>
     </div>
+    </>
   );
 };
 

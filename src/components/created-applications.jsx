@@ -6,37 +6,54 @@ import useFetch from "@/hooks/use-fetch";
 import { BarLoader } from "react-spinners";
 
 const CreatedApplications = () => {
-  const { user } = useUser();
+  const { user, isLoaded } = useUser();
 
   const {
     loading: loadingApplications,
     data: applications,
     fn: fnApplications,
+    error
   } = useFetch(getApplications, {
-    user_id: user.id,
+    user_id: user?.id
   });
 
   useEffect(() => {
-    fnApplications();
-    console.log("applications", applications)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    if (user?.id) {
+      fnApplications();
+    }
+  }, [user]);
 
-  if (loadingApplications) {
-    return <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />;
+  if (!isLoaded || loadingApplications) {
+    return (
+      <div className="flex justify-center items-center min-h-[200px] w-full">
+        <BarLoader width={200} color="#36d7b7" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="text-red-500 p-4 text-center">
+        Error loading applications. Please try again.
+      </div>
+    );
   }
 
   return (
-    <div className="flex flex-col gap-2">
-      {applications?.map((application) => {
-        return (
+    <div className="flex flex-col gap-4">
+      {applications?.length > 0 ? (
+        applications.map((application) => (
           <ApplicationCard
             key={application.id}
             application={application}
             isCandidate={true}
           />
-        );
-      })}
+        ))
+      ) : (
+        <div className="text-center text-gray-500 py-8">
+          No applications found 😢
+        </div>
+      )}
     </div>
   );
 };
